@@ -85,9 +85,10 @@ pub(super) fn process_mesh_collider(
         }
     });
 
-    Some(
-        collider.map_or(Err(ColliderMeshParsingError::MissingMesh), |v| {
-            v.map_err(ColliderMeshParsingError::MeshColliderError)
-        }),
-    )
+    None
+    // Some(
+    //     collider.map_or(Err(ColliderMeshParsingError::MissingMesh), |v| {
+    //         v.map_err(ColliderMeshParsingError::MeshColliderError)
+    //     }),
+    // )
 }
