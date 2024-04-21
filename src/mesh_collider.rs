@@ -65,9 +65,9 @@ pub(super) fn process_mesh_collider(
     world: &World,
     meshes: &mut Assets<Mesh>,
 ) -> Option<Result<Collider, ColliderMeshParsingError>> {
-    if !node_name.starts_with(COLLIDER_MESH_NAME) {
-        return None;
-    }
+    // if !node_name.starts_with(COLLIDER_MESH_NAME) {
+    //     return None;
+    // }
 
     let children = if let Some(children) = children {
         children
