@@ -58,9 +58,9 @@ pub fn get_scene_colliders(
         }
     }
 
-    for e in entities_to_despawn {
-        despawn_with_children_recursive(world, e);
-    }
+    // for e in entities_to_despawn {
+    //     despawn_with_children_recursive(world, e);
+    // }
 
     Ok(result)
 }
