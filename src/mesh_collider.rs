@@ -72,10 +72,10 @@ pub(super) fn process_mesh_collider(
     let children = if let Some(children) = children {
         children
     } else {
-        return Some(Err(ColliderMeshParsingError::MissingMeshNode));
+        return None;
     };
 
-    let collider = children.iter().find_map(|&child| {
+    let maybe_mesh = children.iter().find_map(|&child| {
         if let Some(mesh) = world.get::<Handle<Mesh>>(child) {
             let mesh = meshes.remove(mesh).unwrap();
 
@@ -85,7 +85,8 @@ pub(super) fn process_mesh_collider(
         }
     });
 
-    None
+    maybe_mesh.map(|v| v.map_err(ColliderMeshParsingError::MeshColliderError))
+
     // Some(
     //     collider.map_or(Err(ColliderMeshParsingError::MissingMesh), |v| {
     //         v.map_err(ColliderMeshParsingError::MeshColliderError)
